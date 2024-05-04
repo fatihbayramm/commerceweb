@@ -1,0 +1,28 @@
+{
+  "name": "commerceweb",
+  "version": "1.0.0",
+  "description": " ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fatihbayramm/commerceweb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fatihbayramm/commerceweb/issues"
+  },
+  "homepage": "https://github.com/fatihbayramm/commerceweb#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-http-proxy": "^2.0.0",
+    "node-fetch": "^3.3.2",
+    "request": "^2.88.2"
+  }
+}
