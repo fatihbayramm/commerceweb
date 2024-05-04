@@ -3,7 +3,7 @@
   <div class="container">
     <% products.forEach((product) => { %>
     <div class="list-product">
-      <a href="#" class="list-product-router">
+      <a href="/product/<%= product.id %>" class="list-product-router">
         <div class="list-product-image-box">
           <img
             class="list-product-image"
@@ -12,9 +12,15 @@
           />
         </div>
         <div class="list-product-info">
-          <%= product.name %> <%= product.price %> TL <br />
-          Stokta Kalan Adet: <%= product.stock %> <br />
-          Ürün Kodu: <%= product.sku %>
+          <div class="list-product-price-and-sku">
+            <%= product.name %> |
+            <span class="list-product-price"><%= product.price %> TL</span>
+            <br />
+            <span class="list-product-sku">Ürün Kodu: <%= product.sku %></span>
+          </div>
+          <div class="list-product-stock">
+            Stokta Kalan: <%= product.stock %> <br />
+          </div>
         </div>
       </a>
     </div>

@@ -16,14 +16,10 @@ body {
   color: blue;
 }
 
-.card-body {
-  text-align: center;
-}
-
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-gap: 30px;
 }
 
 .list-product {
@@ -42,4 +38,18 @@ body {
 .list-product-image {
   width: 400px;
   height: 500px;
+}
+
+.list-product-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.list-product-price {
+  color: #bf0000;
+}
+
+.list-product-sku {
+  color: #b2b2b2;
 }

@@ -31,6 +31,21 @@ app.get("/list/", (req, res) => {
   );
 });
 
+app.get("/product/:id", (req, res) => {
+  require("request").get(
+    `${targetUrl}/api/products/${req.params.id}`,
+    {
+      header: {
+        Accept: "application/json",
+      },
+    },
+    function (error, response, body) {
+      const product = JSON.parse(body);
+      res.render("product", { product });
+    }
+  );
+});
+
 const port = 2000;
 app.listen(port, () => {
   console.log(`Sunucu http://localhost:${port}/ adresinde çalışıyor.`);
