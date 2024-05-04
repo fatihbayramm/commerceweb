@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.commerce-web-home {
+  text-decoration: none;
+  color: #000000;
+  font-size: 24px;
+  color: blue;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.list-product {
+  background-color: #ffffff;
+}
+
+.list-product:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s all;
+}
+.list-product-router {
+  text-decoration: none;
+  color: #000000;
+}
+
+.list-product-image {
+  width: 400px;
+  height: 500px;
+}

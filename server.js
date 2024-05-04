@@ -18,13 +18,15 @@ app.get("/", (req, res) => {
 app.get("/list/", (req, res) => {
   require("request").get(
     `${targetUrl}/api/products/`,
+
     {
       headers: {
         Accept: "application/json",
       },
     },
     function (error, response, body) {
-      res.render("list", JSON.parse(body));
+      const products = JSON.parse(body);
+      res.render("list", { products });
     }
   );
 });
@@ -33,5 +35,5 @@ const port = 2000;
 app.listen(port, () => {
   console.log(`Sunucu http://localhost:${port}/ adresinde çalışıyor.`);
 });
-console.log("Madame Coco Projesine Hos Geldiniz :)");
+console.log("Commerce Web Projesine Hos Geldiniz :)");
 console.log(" ");

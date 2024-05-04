@@ -1,1 +1,24 @@
-<%- include("header"); -%> <%- include("footer"); -%>
+<%- include("header"); -%>
+<div class="container-wrap">
+  <div class="container">
+    <% products.forEach((product) => { %>
+    <div class="list-product">
+      <a href="#" class="list-product-router">
+        <div class="list-product-image-box">
+          <img
+            class="list-product-image"
+            src="<%= product.image %>"
+            alt="Bu resim tarayıcınız tarafından görüntülenemiyor."
+          />
+        </div>
+        <div class="list-product-info">
+          <%= product.name %> <%= product.price %> TL <br />
+          Stokta Kalan Adet: <%= product.stock %> <br />
+          Ürün Kodu: <%= product.sku %>
+        </div>
+      </a>
+    </div>
+    <% }) %>
+  </div>
+</div>
+<%- include("footer"); -%>
