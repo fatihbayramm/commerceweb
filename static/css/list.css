@@ -25,6 +25,7 @@ body {
 
 .list-product {
   background-color: #ffffff;
+  border: 1px solid #edf1f2;
 }
 
 .list-product:hover {

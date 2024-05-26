@@ -69,14 +69,23 @@
               <a class="nav-link disabled" aria-disabled="true">Link</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
+          <form
+            class="d-flex js-d-flex"
+            role="search"
+            action="/list/"
+            method="GET"
+          >
             <input
-              class="form-control me-2"
+              class="me-2 form-control js-form-control"
+              name="query"
               type="search"
-              placeholder="Search"
+              placeholder="Ürün ara"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button
+              class="btn btn-outline-success js-btn-outline-success"
+              type="submit"
+            >
               Search
             </button>
           </form>
