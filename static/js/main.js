@@ -1,4 +1,4 @@
-console.log("fatih");
+console.log("list page");
 
 function getSearchResult(newUrl) {
   fetch(newUrl)
@@ -8,6 +8,7 @@ function getSearchResult(newUrl) {
       const doc = parser.parseFromString(html, "text/html");
       const newContainer = doc.querySelector(".js-container");
       const currentContainer = document.querySelector(".js-container");
+      if (!currentContainer) return;
       currentContainer.innerHTML = newContainer.innerHTML;
     })
     .catch((error) => {

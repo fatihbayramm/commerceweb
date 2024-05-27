@@ -32,22 +32,6 @@ app.get("/list/", (req, res) => {
   );
 });
 
-// app.get("/list/", (req, res) => {
-//   require("request").get(
-//     `${targetUrl}/api/products/`,
-
-//     {
-//       headers: {
-//         Accept: "application/json",
-//       },
-//     },
-//     function (error, response, body) {
-//       const products = JSON.parse(body);
-//       res.render("list", { products });
-//     }
-//   );
-// });
-
 app.get("/product/:id", (req, res) => {
   require("request").get(
     `${targetUrl}/api/products/${req.params.id}`,
