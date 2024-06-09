@@ -1,4 +1,119 @@
 <%- include("header"); -%>
+<div class="filter-box">
+  <div class="ft-prc-container">
+    <button class="ft-activate js-ft-activate">
+      <div class="ft-name">Fiyat</div>
+      <div class="ft-name"><i class="bi bi-chevron-down"></i></div>
+    </button>
+    <div class="filter-info-box js-filter-info-box">
+      <form action="/list/" method="GET" class="ft-src-form js-ft-src-form">
+        <div>
+          <input
+            type="text"
+            name="price_min"
+            class="ft-src input-min js-input-min"
+            placeholder="En Az"
+          />
+          -
+          <input
+            type="text"
+            name="price_max"
+            class="ft-src input-max js-input-max"
+            placeholder="En Çok"
+          />
+          <button type="submit" class="ft-src-btn">
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+
+        <div class="ft-price-radios">
+          <ul>
+            <li>
+              <label class="choice-label"
+                ><input
+                  type="checkbox"
+                  name="price"
+                  value="0,400"
+                  class="choice js-choice"
+                />
+                0 - 400 TL</label
+              >
+            </li>
+            <li>
+              <label class="choice-label"
+                ><input
+                  type="checkbox"
+                  name="price"
+                  value="400,1000"
+                  class="choice js-choice"
+                />
+                400 - 1000 TL</label
+              >
+            </li>
+            <li>
+              <label class="choice-label"
+                ><input
+                  type="checkbox"
+                  name="price"
+                  value="1000,1750"
+                  class="choice js-choice"
+                />
+                1000 - 1750 TL</label
+              >
+            </li>
+            <li>
+              <label class="choice-label"
+                ><input
+                  type="checkbox"
+                  name="price"
+                  value="1750,3000"
+                  class="choice js-choice"
+                />
+                1750 - 3000 TL</label
+              >
+            </li>
+            <li>
+              <label class="choice-label"
+                ><input
+                  type="checkbox"
+                  name="price"
+                  value="3000,6000"
+                  class="choice js-choice"
+                />
+                3000 - 6000 TL</label
+              >
+            </li>
+            <li>
+              <label class="choice-label"
+                ><input
+                  type="checkbox"
+                  name="price"
+                  value="6000,700000"
+                  class="choice js-choice"
+                />
+                6000 - 700000 TL</label
+              >
+            </li>
+          </ul>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="ft-ctgy-container">
+    <button class="ft-activate js-ft-activate">
+      <div class="ft-name">Kategori</div>
+      <div class="ft-name"><i class="bi bi-chevron-down"></i></div>
+    </button>
+    <div class="filter-info-box js-filter-info-box">
+      <form
+        action="/list/"
+        method="GET"
+        class="ft-ctgy-form js-ft-ctgy-form"
+      ></form>
+    </div>
+  </div>
+</div>
+
 <div class="container-wrap">
   <div class="container js-container">
     <% products.forEach((product) => { %>

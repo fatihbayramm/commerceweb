@@ -19,6 +19,7 @@
   "homepage": "https://github.com/fatihbayramm/commerceweb#readme",
   "dependencies": {
     "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "express-http-proxy": "^2.0.0",

@@ -1,6 +1,6 @@
 console.log("list page");
 
-function getSearchResult(newUrl) {
+function getResult(newUrl) {
   fetch(newUrl)
     .then((resp) => resp.text())
     .then((html) => {
@@ -22,18 +22,84 @@ function searchProduct() {
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const input = document.querySelector(".js-form-control");
-    const searchValue = input.value;
+    const searchValue = document.querySelector(".js-form-control").value;
 
-    let params = new URLSearchParams(window.location.search);
-    params.set("query", searchValue);
+    let params = new URLSearchParams();
+
+    if (searchValue) {
+      params.set("query", searchValue);
+    }
 
     const newUrl = `/list/?${params.toString()}`;
 
     window.history.pushState({ path: newUrl }, "", newUrl);
 
-    getSearchResult(newUrl);
+    getResult(newUrl);
+  });
+}
+
+function activateFilterBoxes() {
+  document.querySelectorAll(".js-ft-activate").forEach((activate) => {
+    activate.addEventListener("click", (event) => {
+      event.target.parentElement
+        .querySelector(".js-filter-info-box")
+        .classList.toggle("filter-info-box-act");
+    });
+  });
+}
+
+function filterProductsManual() {
+  const form = document.querySelector(".js-ft-src-form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    let priceMinValue = document.querySelector(".js-input-min").value;
+    let priceMaxValue = document.querySelector(".js-input-max").value;
+
+    let params = new URLSearchParams();
+
+    params.set("price_min", priceMinValue);
+
+    params.set("price_max", priceMaxValue);
+
+    const newUrl = `/list/?${params.toString()}`;
+
+    window.history.pushState({ path: newUrl }, "", newUrl);
+
+    getResult(newUrl);
+  });
+}
+
+function filterProductsByChoice() {
+  document.querySelectorAll(".js-choice").forEach((choice) => {
+    choice.addEventListener("click", () => {
+      document.querySelectorAll(".js-choice").forEach((cb) => {
+        if (cb !== choice) {
+          cb.checked = false;
+        }
+      });
+      let values = choice.value.split(",");
+
+      let priceMinValue = values[0];
+      let priceMaxValue = values[1];
+
+      let params = new URLSearchParams();
+
+      params.set("price_min", priceMinValue);
+
+      params.set("price_max", priceMaxValue);
+
+      const newUrl = `/list/?${params.toString()}`;
+
+      window.history.pushState({ path: newUrl }, "", newUrl);
+
+      getResult(newUrl);
+    });
   });
 }
 
 searchProduct();
+filterProductsManual();
+activateFilterBoxes();
+filterProductsByChoice();
