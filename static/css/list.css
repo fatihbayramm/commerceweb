@@ -35,6 +35,10 @@ body {
 
 .filter-info-box {
   display: none;
+  position: relative;
+  z-index: 10;
+  position: absolute;
+  z-index: 10;
 }
 
 .filter-info-box-act {
@@ -45,6 +49,8 @@ body {
   height: 200px;
   padding: 10px;
   overflow: scroll;
+  position: absolute;
+  z-index: 10;
 }
 
 .filter-info-box-act ul {
@@ -86,11 +92,23 @@ body {
   padding: 0px 8px;
 }
 
+.clear-ft-btn {
+  display: flex;
+  align-items: flex-end;
+  padding: 10px 10px 0px 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
   padding: 20px 0px 20px 0px;
+  position: relative;
+  z-index: 1;
 }
 
 .list-product {

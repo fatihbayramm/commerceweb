@@ -73,7 +73,7 @@ function filterProductsManual() {
 
 function filterProductsByChoice() {
   document.querySelectorAll(".js-choice").forEach((choice) => {
-    choice.addEventListener("click", () => {
+    choice.addEventListener("click", (event) => {
       document.querySelectorAll(".js-choice").forEach((cb) => {
         if (cb !== choice) {
           cb.checked = false;
@@ -99,7 +99,27 @@ function filterProductsByChoice() {
   });
 }
 
+function clearAllFilters() {
+  document.querySelector(".js-clear-ft-btn").addEventListener("click", () => {
+    let params = new URLSearchParams();
+
+    const newUrl = `/list/?${params.toString()}`;
+
+    window.history.pushState({ path: newUrl }, "", newUrl);
+
+    document.querySelectorAll(".js-choice").forEach((cb) => {
+      cb.checked = false;
+    });
+
+    document.querySelector(".js-input-min").value = "";
+    document.querySelector(".js-input-max").value = "";
+
+    getResult(newUrl);
+  });
+}
+
 searchProduct();
 filterProductsManual();
 activateFilterBoxes();
 filterProductsByChoice();
+clearAllFilters();
