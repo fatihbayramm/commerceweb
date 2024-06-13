@@ -110,8 +110,6 @@ function filterProductsByChoice() {
   });
 }
 
-function closeFilterBoxes() {}
-
 function clearAllFilters() {
   document.querySelector(".js-clear-ft-btn").addEventListener("click", () => {
     let params = new URLSearchParams();
@@ -134,6 +132,6 @@ function clearAllFilters() {
 searchProduct();
 filterProductsManual();
 openFilterBoxes();
-closeFilterBoxes();
+
 filterProductsByChoice();
 clearAllFilters();

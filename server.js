@@ -36,13 +36,41 @@ app.get("/product/:id", (req, res) => {
   require("request").get(
     `${targetUrl}/api/products/${req.params.id}`,
     {
-      header: {
+      headers: {
         Accept: "application/json",
       },
     },
     function (error, response, body) {
       const product = JSON.parse(body);
       res.render("product", { product });
+    }
+  );
+});
+
+app.get("/register/", (req, res) => {
+  require("request").get(
+    `${targetUrl}/api/auth/register`,
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+    },
+    function (error, response, body) {
+      res.render("auth/register", JSON.parse(body));
+    }
+  );
+});
+
+app.get("/login/", (req, res) => {
+  require("request").get(
+    `${targetUrl}/api/auth/login`,
+    {
+      headers: {
+        "content-type": "application/json",
+      },
+    },
+    function (error, response, body) {
+      res.render("auth/login", JSON.parse(body));
     }
   );
 });
