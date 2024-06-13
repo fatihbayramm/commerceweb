@@ -38,7 +38,7 @@ function searchProduct() {
   });
 }
 
-function activateFilterBoxes() {
+function openFilterBoxes() {
   document.querySelectorAll(".js-ft-activate").forEach((activate) => {
     activate.addEventListener("click", (event) => {
       event.target.parentElement
@@ -73,31 +73,44 @@ function filterProductsManual() {
 
 function filterProductsByChoice() {
   document.querySelectorAll(".js-choice").forEach((choice) => {
-    choice.addEventListener("click", (event) => {
+    choice.addEventListener("change", () => {
       document.querySelectorAll(".js-choice").forEach((cb) => {
         if (cb !== choice) {
           cb.checked = false;
         }
       });
-      let values = choice.value.split(",");
 
-      let priceMinValue = values[0];
-      let priceMaxValue = values[1];
+      const isChecked = Array.from(
+        document.querySelectorAll(".js-choice")
+      ).some((cb) => cb.checked);
 
-      let params = new URLSearchParams();
+      if (isChecked) {
+        let values = choice.value.split(",");
 
-      params.set("price_min", priceMinValue);
+        let priceMinValue = values[0];
+        let priceMaxValue = values[1];
 
-      params.set("price_max", priceMaxValue);
+        let params = new URLSearchParams();
 
-      const newUrl = `/list/?${params.toString()}`;
+        params.set("price_min", priceMinValue);
+        params.set("price_max", priceMaxValue);
 
-      window.history.pushState({ path: newUrl }, "", newUrl);
+        const newUrl = `/list/?${params.toString()}`;
 
-      getResult(newUrl);
+        window.history.pushState({ path: newUrl }, "", newUrl);
+
+        getResult(newUrl);
+      } else {
+        const originalUrl = "/list/";
+        window.history.pushState({ path: originalUrl }, "", originalUrl);
+
+        getResult(originalUrl);
+      }
     });
   });
 }
+
+function closeFilterBoxes() {}
 
 function clearAllFilters() {
   document.querySelector(".js-clear-ft-btn").addEventListener("click", () => {
@@ -120,6 +133,7 @@ function clearAllFilters() {
 
 searchProduct();
 filterProductsManual();
-activateFilterBoxes();
+openFilterBoxes();
+closeFilterBoxes();
 filterProductsByChoice();
 clearAllFilters();
