@@ -1,1 +1,55 @@
-<%- include("../header"); -%> <%- include("../footer"); -%>
+<%- include("../header"); -%>
+<div class="register-container">
+  <div class="register-box">
+    <h1>Kayıt Ol</h1>
+    <div class="register-input-box">
+      <label for="firstname">İsim</label> <br />
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        class="register-input"
+      />
+    </div>
+    <div class="register-input-box">
+      <label for="lastname">Soyisim</label> <br />
+      <input type="text" name="lastname" id="lastname" class="register-input" />
+    </div>
+    <div class="register-input-box">
+      <label for="register-email" class="register-label">E-posta</label> <br />
+      <input
+        type="text"
+        name="register-email"
+        id="register-email"
+        class="register-input"
+      />
+    </div>
+    <div class="register-input-box">
+      <label for="register-password" class="register-label">Şifre</label> <br />
+      <input
+        type="password"
+        name="register-password"
+        id="register-password"
+        class="register-input"
+      />
+    </div>
+    <div class="register-input-box">
+      <label for="register-password-confirm" class="register-label"
+        >Şifre Onay</label
+      >
+      <br />
+      <input
+        type="password"
+        name="register-password-confirm"
+        id="register-password-confirm"
+        class="register-input"
+      />
+      <br />
+      <a href="/login/" class="login-page-router"
+        >Zaten bir hesabın var mı? Giriş Yap.</a
+      >
+    </div>
+    <button type="submit" class="register-btn">Kayıt Ol</button>
+  </div>
+</div>
+<%- include("../footer"); -%>

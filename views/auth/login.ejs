@@ -1,1 +1,29 @@
-<%- include("../header"); -%> <%- include("../footer"); -%>
+<%- include("../header"); -%>
+<div class="login-container">
+  <div class="login-box">
+    <h1>Giriş Yap</h1>
+    <div class="login-input-box">
+      <label for="login-email" class="login-label">E-posta</label> <br />
+      <input
+        type="text"
+        name="login-email"
+        id="login-email"
+        class="login-input"
+      />
+    </div>
+    <div class="login-input-box">
+      <label for="login-password" class="login-label">Şifre</label> <br />
+      <input
+        type="password"
+        name="login-password"
+        id="login-password"
+        class="login-input"
+      />
+      <br />
+      <a href="/register/" class="register-page-router">Kaydol</a>
+    </div>
+
+    <button type="submit" class="login-btn">Giriş Yap</button>
+  </div>
+</div>
+<%- include("../footer"); -%>
