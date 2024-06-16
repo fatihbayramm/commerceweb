@@ -12,18 +12,30 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var scriptList = document.createElement("script");
+    let scriptList = document.createElement("script");
     scriptList.type = "module";
     scriptList.src = "/js/main.js";
 
-    var scriptProduct = document.createElement("script");
+    let scriptProduct = document.createElement("script");
     scriptProduct.type = "module";
     scriptProduct.src = "/js/product.js";
+
+    let scriptRegister = document.createElement("script");
+    scriptRegister.type = "module";
+    scriptRegister.src = "/js/register.js";
+
+    let scriptLogin = document.createElement("script");
+    scriptLogin.type = "module";
+    scriptLogin.src = "/js/login.js";
 
     if (window.location.pathname.includes("list")) {
       document.body.appendChild(scriptList);
     } else if (window.location.pathname.includes("product")) {
       document.body.appendChild(scriptProduct);
+    } else if (window.location.pathname.includes("register")) {
+      document.body.appendChild(scriptRegister);
+    } else if (window.location.pathname.includes("login")) {
+      document.body.appendChild(scriptLogin);
     }
   });
 </script>

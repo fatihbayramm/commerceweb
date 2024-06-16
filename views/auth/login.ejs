@@ -2,6 +2,7 @@
 <div class="login-container">
   <div class="login-box">
     <h1>Giriş Yap</h1>
+    <!-- <form action="#"> -->
     <div class="login-input-box">
       <label for="login-email" class="login-label">E-posta</label> <br />
       <input
@@ -12,18 +13,23 @@
       />
     </div>
     <div class="login-input-box">
-      <label for="login-password" class="login-label">Şifre</label> <br />
+      <label for="js-login-password" class="login-label">Şifre</label> <br />
       <input
         type="password"
         name="login-password"
-        id="login-password"
+        id="js-login-password"
         class="login-input"
       />
+      <button class="login-show-password js-login-show-password">
+        <i class="bi bi-eye-fill js-bi-eye-fill"></i>
+      </button>
+
       <br />
       <a href="/register/" class="register-page-router">Kaydol</a>
     </div>
 
     <button type="submit" class="login-btn">Giriş Yap</button>
+    <!-- </form> -->
   </div>
 </div>
 <%- include("../footer"); -%>

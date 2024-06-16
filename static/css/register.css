@@ -28,6 +28,20 @@
   width: 300px;
 }
 
+.register-show-password {
+  border: none;
+  background: none;
+}
+
+.bi-eye,
+.bi-eye-slash {
+  position: absolute;
+  font-size: 20px;
+  right: 820px;
+  top: 70.3%;
+  transform: translateY(-50%);
+}
+
 .login-page-router {
   font-size: 14px;
   cursor: pointer;
