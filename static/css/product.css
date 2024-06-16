@@ -13,7 +13,7 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 30px;
-  padding: 50px;
+  padding: 50px 220px;
 }
 
 .product-image {
