@@ -28,18 +28,10 @@
   width: 300px;
 }
 
-.login-show-password {
-  border: none;
+.login-show-psw-btn {
+  font-size: 15px;
   background: none;
-}
-
-.bi-eye-fill,
-.bi-eye-slash-fill {
-  position: absolute;
-  right: 820px;
-  top: 51.3%;
-  transform: translateY(-50%);
-  font-size: 20px;
+  border: none;
 }
 
 .register-page-router {

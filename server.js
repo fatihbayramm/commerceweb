@@ -1,10 +1,13 @@
 const express = require("express");
 const proxy = require("express-http-proxy");
 
-const app = express();
-app.set("view engine", "ejs");
-
 const targetUrl = "http://localhost:9000";
+
+const request = require("request");
+
+const app = express();
+
+app.set("view engine", "ejs");
 
 app.use(express.static("static"));
 
@@ -18,7 +21,7 @@ app.get("/", (req, res) => {
 app.get("/list/", (req, res) => {
   let queryString =
     req.url.split("?").length > 1 ? `?${req.url.split("?")[1]}` : "";
-  require("request").get(
+  request.get(
     `${targetUrl}/api/products/${queryString}`,
     {
       headers: {
@@ -33,7 +36,7 @@ app.get("/list/", (req, res) => {
 });
 
 app.get("/product/:id", (req, res) => {
-  require("request").get(
+  request.get(
     `${targetUrl}/api/products/${req.params.id}`,
     {
       headers: {
@@ -48,21 +51,38 @@ app.get("/product/:id", (req, res) => {
 });
 
 app.get("/register/", (req, res) => {
-  require("request").get(
-    `${targetUrl}/api/auth/register`,
+  res.render("auth/register");
+});
+
+app.post("/register/", (req, res) => {
+  const formData = JSON.stringify(req.body);
+  console.log("Form Data:", formData);
+
+  request.post(
+    `${targetUrl}/api/auth/register/`,
     {
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
+      body: formData,
     },
     function (error, response, body) {
-      res.render("auth/register", JSON.parse(body));
+      if (error) {
+        return res.status(500).send("Server Error");
+      }
+      try {
+        const data = JSON.parse(body);
+        res.json(data);
+      } catch (e) {
+        res.status(500).send("Error parsing JSON response");
+        console.log(e);
+      }
     }
   );
 });
 
 app.get("/login/", (req, res) => {
-  require("request").get(
+  request.get(
     `${targetUrl}/api/auth/login`,
     {
       headers: {

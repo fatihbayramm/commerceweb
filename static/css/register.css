@@ -28,18 +28,10 @@
   width: 300px;
 }
 
-.register-show-password {
+.register-show-psw-btn {
   border: none;
   background: none;
-}
-
-.bi-eye,
-.bi-eye-slash {
-  position: absolute;
-  font-size: 20px;
-  right: 820px;
-  top: 70.3%;
-  transform: translateY(-50%);
+  font-size: 15px;
 }
 
 .login-page-router {
