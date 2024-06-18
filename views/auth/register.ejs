@@ -10,6 +10,7 @@
           name="first_name"
           id="js-firstname"
           class="register-input"
+          required
         />
       </div>
       <div class="register-input-box">
@@ -19,18 +20,21 @@
           name="last_name"
           id="js-lastname"
           class="register-input"
+          required
         />
       </div>
       <div class="register-input-box">
         <label for="js-register-email" class="register-label">E-posta</label>
         <br />
         <input
-          type="text"
+          type="email"
           name="email"
           id="js-register-email"
           class="register-input"
+          required
         />
       </div>
+      <div class="email-error">Lütfen geçerli bir e-posta adresi giriniz.</div>
       <div class="register-input-box">
         <label for="js-register-password" class="register-label">Şifre</label>
         <br />
@@ -39,6 +43,7 @@
           name="password1"
           id="js-register-password"
           class="register-input"
+          required
         />
         <br />
         <button class="register-show-psw-btn" type="button">
@@ -60,6 +65,7 @@
           name="password2"
           id="js-register-password-confirm"
           class="register-input"
+          required
         />
 
         <br />
@@ -67,6 +73,7 @@
           >Zaten bir hesabın var mı? Giriş Yap.</a
         >
       </div>
+      <p id="error-message"></p>
       <button type="submit" class="register-btn">Kayıt Ol</button>
     </form>
   </div>

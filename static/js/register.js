@@ -10,16 +10,44 @@ function showPasswordRegister() {
     });
 }
 
+function validateEmail(email) {
+  const errorMessage = document.getElementById("error-message");
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const checkEmail = emailPattern.test(email);
+
+  if (!checkEmail.value) {
+    errorMessage.textContent = "Geçersiz e-posta formatı!";
+    return;
+  }
+}
+
+function validatePassword(password, passwordConfirm) {
+  const errorMessage = document.getElementById("error-message");
+  if (password.value !== passwordConfirm.value) {
+    errorMessage.textContent = "Şifreler eşleşmiyor!";
+    return;
+  }
+}
+
 function sendRegisterForm() {
   const form = document.getElementById("js-register-form");
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    // FormData nesnesini oluştur
+    const email = document.getElementById("js-register-email");
+    const password = document.getElementById("js-register-password");
+    const passwordConfirm = document.getElementById(
+      "js-register-password-confirm"
+    );
+
+    validateEmail(email);
+    validatePassword(password, passwordConfirm);
+
     const formData = new FormData(form);
 
-    // FormData nesnesini JSON formatına çevir
     const formDataObj = {};
     formData.forEach((value, key) => {
       formDataObj[key] = value;
@@ -42,6 +70,8 @@ function sendRegisterForm() {
 
       const data = await response.json();
       console.log("Başarılı:", data);
+
+      // alert("Kayıt İşlemi Başarılı");
     } catch (error) {
       console.error("Hata:", error);
     }
