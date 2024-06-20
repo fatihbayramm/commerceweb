@@ -10,44 +10,13 @@ function showPasswordRegister() {
     });
 }
 
-function validateEmail(email) {
-  const errorMessage = document.getElementById("error-message");
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const checkEmail = emailPattern.test(email);
-
-  if (!checkEmail.value) {
-    errorMessage.textContent = "Geçersiz e-posta formatı!";
-    return;
-  }
-}
-
-function validatePassword(password, passwordConfirm) {
-  const errorMessage = document.getElementById("error-message");
-  if (password.value !== passwordConfirm.value) {
-    errorMessage.textContent = "Şifreler eşleşmiyor!";
-    return;
-  }
-}
-
 function sendRegisterForm() {
   const form = document.getElementById("js-register-form");
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const email = document.getElementById("js-register-email");
-    const password = document.getElementById("js-register-password");
-    const passwordConfirm = document.getElementById(
-      "js-register-password-confirm"
-    );
-
-    validateEmail(email);
-    validatePassword(password, passwordConfirm);
-
     const formData = new FormData(form);
-
     const formDataObj = {};
     formData.forEach((value, key) => {
       formDataObj[key] = value;
@@ -64,18 +33,33 @@ function sendRegisterForm() {
       });
 
       if (!response.ok) {
-        const text = await response.text();
-        throw new Error(`Error: ${text}`);
+        const errorData = await response.json();
+        console.log(errorData);
+        displayErrors(errorData);
+      } else {
+        const data = await response.json();
+        console.log(data);
+        window.location.href = "/login/";
       }
-
-      const data = await response.json();
-      console.log("Başarılı:", data);
-
-      // alert("Kayıt İşlemi Başarılı");
     } catch (error) {
       console.error("Hata:", error);
     }
   });
+}
+
+function displayErrors(errorData) {
+  const errorMessageContainer = document.getElementById("error-message");
+  errorMessageContainer.innerHTML = ""; // Önceki hata mesajlarını temizle
+
+  for (const [key, value] of Object.entries(errorData)) {
+    const errorItem = document.createElement("p");
+    errorItem.textContent = `${value}`;
+    errorMessageContainer.appendChild(errorItem);
+
+    setTimeout(() => {
+      errorMessageContainer.innerHTML = "";
+    }, 5000);
+  }
 }
 
 showPasswordRegister();

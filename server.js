@@ -72,7 +72,7 @@ app.post("/register/", (req, res) => {
       }
       try {
         const data = JSON.parse(body);
-        res.json(data);
+        res.status(response.statusCode).json(data);
       } catch (e) {
         res.status(500).send("Error parsing JSON response");
         console.log(e);
