@@ -39,7 +39,12 @@ function sendRegisterForm() {
       } else {
         const data = await response.json();
         console.log(data);
-        window.location.href = "/login/";
+        // TODO: save token to cookie
+        let token = data.token;
+
+        setCookie("authToken", token, 7);
+
+        // window.location.href = "/list/";
       }
     } catch (error) {
       console.error("Hata:", error);
@@ -49,7 +54,7 @@ function sendRegisterForm() {
 
 function displayErrors(errorData) {
   const errorMessageContainer = document.getElementById("error-message");
-  errorMessageContainer.innerHTML = ""; // Önceki hata mesajlarını temizle
+  errorMessageContainer.innerHTML = "";
 
   for (const [key, value] of Object.entries(errorData)) {
     const errorItem = document.createElement("p");
@@ -60,6 +65,16 @@ function displayErrors(errorData) {
       errorMessageContainer.innerHTML = "";
     }, 5000);
   }
+}
+
+function setCookie(name, value, days) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 showPasswordRegister();
