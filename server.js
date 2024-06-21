@@ -82,15 +82,32 @@ app.post("/register/", (req, res) => {
 });
 
 app.get("/login/", (req, res) => {
-  request.get(
-    `${targetUrl}/api/auth/login`,
+  res.render("auth/login");
+});
+
+app.post("/login/", (req, res) => {
+  const formData = JSON.stringify(req.body);
+  console.log("Form Data:", formData);
+
+  request.post(
+    `${targetUrl}/api/auth/login/`,
     {
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
+      body: formData,
     },
     function (error, response, body) {
-      res.render("auth/login", JSON.parse(body));
+      if (error) {
+        return res.status(500).send("Server Error");
+      }
+      try {
+        const data = JSON.parse(body);
+        res.status(response.statusCode).json(data);
+      } catch (e) {
+        res.status(500).send("Error parsing JSON response");
+        console.log(e);
+      }
     }
   );
 });

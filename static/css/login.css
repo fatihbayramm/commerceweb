@@ -22,6 +22,7 @@
 
 .login-label {
   cursor: pointer;
+  font-size: 20px;
 }
 
 .login-input {
@@ -39,6 +40,10 @@
   cursor: pointer;
   color: gray;
   float: right;
+}
+
+#error-message-login {
+  color: red;
 }
 
 .login-btn {

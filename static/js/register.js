@@ -3,7 +3,7 @@ console.log("register page");
 function showPasswordRegister() {
   document
     .getElementById("js-register-show-password")
-    .addEventListener("click", (event) => {
+    .addEventListener("click", () => {
       const passwordInput = document.getElementById("js-register-password");
       passwordInput.type =
         passwordInput.type === "password" ? "text" : "password";
@@ -39,12 +39,12 @@ function sendRegisterForm() {
       } else {
         const data = await response.json();
         console.log(data);
-        // TODO: save token to cookie
+
         let token = data.token;
 
         setCookie("authToken", token, 7);
 
-        // window.location.href = "/list/";
+        window.location.href = "/list/";
       }
     } catch (error) {
       console.error("Hata:", error);
@@ -53,7 +53,9 @@ function sendRegisterForm() {
 }
 
 function displayErrors(errorData) {
-  const errorMessageContainer = document.getElementById("error-message");
+  const errorMessageContainer = document.getElementById(
+    "error-message-register"
+  );
   errorMessageContainer.innerHTML = "";
 
   for (const [key, value] of Object.entries(errorData)) {

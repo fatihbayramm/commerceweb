@@ -4,22 +4,22 @@
     <h1>Kayıt Ol</h1>
     <form id="js-register-form" action="#" method="POST">
       <div class="register-input-box">
-        <label for="js-firstname">İsim</label> <br />
+        <label for="js-firstname" class="register-label">İsim</label> <br />
         <input
           type="text"
           name="first_name"
           id="js-firstname"
-          class="register-input"
+          class="register-input form-control form-control-lg"
           required
         />
       </div>
       <div class="register-input-box">
-        <label for="js-lastname">Soyisim</label> <br />
+        <label for="js-lastname" class="register-label">Soyisim</label> <br />
         <input
           type="text"
           name="last_name"
           id="js-lastname"
-          class="register-input"
+          class="register-input form-control form-control-lg"
           required
         />
       </div>
@@ -30,11 +30,11 @@
           type="email"
           name="email"
           id="js-register-email"
-          class="register-input"
+          class="register-input form-control form-control-lg"
           required
         />
       </div>
-      <div class="email-error">Lütfen geçerli bir e-posta adresi giriniz.</div>
+
       <div class="register-input-box">
         <label for="js-register-password" class="register-label">Şifre</label>
         <br />
@@ -42,7 +42,7 @@
           type="password"
           name="password1"
           id="js-register-password"
-          class="register-input"
+          class="register-input form-control form-control-lg"
           required
         />
         <br />
@@ -64,7 +64,7 @@
           type="password"
           name="password2"
           id="js-register-password-confirm"
-          class="register-input"
+          class="register-input form-control form-control-lg"
           required
         />
 
@@ -73,7 +73,8 @@
           >Zaten bir hesabın var mı? Giriş Yap.</a
         >
       </div>
-      <p id="error-message"></p>
+
+      <p id="error-message-register"></p>
       <button type="submit" class="register-btn">Kayıt Ol</button>
     </form>
   </div>

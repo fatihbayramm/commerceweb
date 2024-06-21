@@ -2,40 +2,43 @@
 <div class="login-container">
   <div class="login-box">
     <h1>Giriş Yap</h1>
-    <!-- <form action="#"> -->
-    <div class="login-input-box">
-      <label for="login-email" class="login-label">E-posta</label> <br />
-      <input
-        type="text"
-        name="login-email"
-        id="login-email"
-        class="login-input"
-      />
-    </div>
-    <div class="login-input-box">
-      <label for="js-login-password" class="login-label">Şifre</label> <br />
-      <input
-        type="password"
-        name="login-password"
-        id="js-login-password"
-        class="login-input"
-      />
-      <br />
-
-      <button class="login-show-psw-btn">
+    <form id="js-login-form" action="#" method="POST">
+      <div class="login-input-box">
+        <label for="login-email" class="login-label">E-posta</label> <br />
         <input
-          type="checkbox"
-          id="js-login-show-password"
-          name="login-show-password"
+          type="text"
+          name="email"
+          id="login-email"
+          class="login-input form-control form-control-lg"
+          required
         />
-        <label for="js-login-show-password"> Şifreyi Göster</label>
-      </button>
+      </div>
+      <div class="login-input-box">
+        <label for="js-login-password" class="login-label">Şifre</label> <br />
+        <input
+          type="password"
+          name="password"
+          id="js-login-password"
+          class="login-input form-control form-control-lg"
+          required
+        />
+        <br />
 
-      <a href="/register/" class="register-page-router">Kaydol</a>
-    </div>
+        <button class="login-show-psw-btn" type="button">
+          <input
+            type="checkbox"
+            id="js-login-show-password"
+            name="login-show-password"
+          />
+          <label for="js-login-show-password"> Şifreyi Göster</label>
+        </button>
 
-    <button type="submit" class="login-btn">Giriş Yap</button>
-    <!-- </form> -->
+        <a href="/register/" class="register-page-router">Kaydol</a>
+      </div>
+
+      <p id="error-message-login"></p>
+      <button type="submit" class="login-btn">Giriş Yap</button>
+    </form>
   </div>
 </div>
 <%- include("../footer"); -%>
