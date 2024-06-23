@@ -38,6 +38,19 @@ function searchProduct() {
   });
 }
 
+function activateFilterBox() {
+  document
+    .querySelector(".filter-activate-btn")
+    .addEventListener("click", () => {
+      document
+        .querySelector(".filter-box")
+        .classList.toggle("filter-box-activate");
+      document
+        .querySelector(".filter-activate-btn")
+        .classList.toggle("filter-activate-btn-act");
+    });
+}
+
 function openFilterBoxes() {
   document.querySelectorAll(".js-ft-activate").forEach((activate) => {
     activate.addEventListener("click", (event) => {
@@ -130,8 +143,8 @@ function clearAllFilters() {
 }
 
 searchProduct();
+activateFilterBox();
 filterProductsManual();
 openFilterBoxes();
-
 filterProductsByChoice();
 clearAllFilters();
